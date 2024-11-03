@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/myprogram.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            // Stop at the first CPU instruction
+            "runToEntryPoint": "main",
+            "device": "stm32f0",
+            "servertype": "openocd",
+            "gdbPath": "gdb-multiarch",
+            "configFiles": [
+                "interface/stlink.cfg",
+                "target/stm32f0x.cfg"
+            ],
+            "preLaunchCommands": [
+                "monitor program ${workspaceFolder}/myprogram.elf verify reset"
+            ],
+            "internalConsoleOptions": "neverOpen",
+        }
+    ]
+}
